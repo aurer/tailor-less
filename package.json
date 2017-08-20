@@ -1,0 +1,9 @@
+{
+  "name": "tailor-css",
+  "version": "1.0.0",
+  "description": "The Tailor CSS framework",
+  "main": "screen.less",
+  "repository": "git@github.com:aurer/tailor-less",
+  "author": "Phil Maurer <philmau@gmail.com>",
+  "license": "MIT"
+}
