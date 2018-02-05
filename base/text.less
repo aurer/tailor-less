@@ -84,11 +84,25 @@ hr {
   border-top: 1px inset @color-neutral;
 }
 
-// Contain overflow in all browsers.
+code {
+  border: 1px solid @color-neutral-light;
+  background-color: @color-neutral-lighter;
+  padding: .2rem .5rem;
+  border-radius: 4px;
+  overflow: auto;
+}
+
 pre {
   overflow: auto;
   tab-size: 2;
+  border-radius: 4px;
+
+  code {
+    display: block;
+    padding: @space-sm;
+  }
 }
+
 
 // Address odd `em`-unit font size rendering in all browsers.
 code,
@@ -96,5 +110,5 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em;
+  font-size: .9em;
 }
