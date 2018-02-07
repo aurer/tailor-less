@@ -1,83 +1,98 @@
+// Basic grid
 .Grid {
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  display: flex;
-  flex-flow: row wrap;
+  .Grid();
+}
 
-  // Space items horizontally and vertically
-  &--spaced {
-    margin: 0 -@grid-space/2;
+// Grid with spacing
+.Grid--spaced {
+  .GridXY();
+}
 
-    > .Grid-cell {
-      padding: 0 @grid-space/2 @grid-space;
-    }
-  }
+// Grid with horizontal spacing
+.Grid--spacedX {
+  .GridX();
+}
 
-  // Space items horizontally only
-  &--spacedHorizontally {
-    margin: 0 -@grid-space/2;
+// Grid with vertical spacing
+.Grid--spacedY {
+  .GridY();
+}
 
-    > .Grid-cell {
-      padding: 0 @grid-space/2;
-    }
-  }
+// Modifier: center align all grid cells
+.Grid--alignCenter {
+  text-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
 
-  // Space items vertically only
-  &--spacedVertically {
-    > .Grid-cell {
-      padding-bottom: @grid-space;
-    }
-  }
+// Modifier: right align all grid cells
+.Grid--alignEnd {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
 
-  // Modifier: center align all grid cells
-  &--alignCenter {
-    text-align: center;
-    justify-content: center;
-  }
+// Modifier: middle-align grid cells
+.Grid--alignMiddle {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
 
-  // Modifier: right align all grid cells
-  &--alignEnd {
-    justify-content: flex-end;
-  }
+// Modifier: bottom-align grid cells
+.Grid--alignBottom {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
 
-  // Modifier: middle-align grid cells
-  &--alignMiddle {
-    align-items: center;
-  }
-
-  // Modifier: bottom-align grid cells
-  &--alignBottom {
-    align-items: flex-end;
-  }
-
-  // Modifier: allow cells to equal distribute width
-  &--fit {
-    > .Grid-cell {
-      flex: 1 1 0%;
-    }
+// Modifier: allow cells to equal distribute width
+.Grid--fit {
+  .grid-cell {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
   }
 }
 
-.Grid-cell {
-  box-sizing: inherit;
-  vertical-align: top;
-  width: 100%;
-  flex-basis: 100%;
-  min-width: 0;
-  float: left;
-}
-
+// Align this cell to the right
 .Grid-cell--alignRight {
-  text-align: right;
+  margin-left: auto;
 }
 
+// Center this cell within remaining space
 .Grid-cell--center {
   margin: 0 auto !important;
 }
 
+// Make this cell fill remaining space
 .Grid-cell--auto {
+  -webkit-box-flex: 1 !important;
+  -ms-flex: 1 !important;
   flex: 1 !important;
+}
+
+// Remove padding from the bottom of this cell
+.Grid-cell--fullHeight {
+  padding-bottom: 0 !important;
+}
+
+// Add grid size classes
+.GridSizes();
+
+@media @mq-sm {
+  .GridSizes(-sm-);
+}
+
+@media @mq-md {
+  .GridSizes(-md-);
+}
+
+@media @mq-lg {
+  .GridSizes(-lg-);
+}
+
+@media @mq-xl {
+  .GridSizes(-xl-);
 }
