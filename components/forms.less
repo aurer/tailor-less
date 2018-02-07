@@ -13,7 +13,7 @@
 	input[type=submit],
 	input[type=reset],
 	input[type=button] {
-		&:extend(.Button--primary all);
+		&:extend(.Button all);
 	}
 }
 
@@ -28,13 +28,19 @@
 
 // Text inputs
 .Form-inputs {
-	input:not([type=checkbox]):not([type=radio]):not([type=image]),
+	input[type='text'],
+	input[type='search'],
+	input[type='tel'],
+	input[type='url'],
+	input[type='email'],
+	input[type='password'],
+	input[type='date'],
+	input[type='time'],
+	input[type='number'],
 	textarea {
-		box-sizing: border-box;
 		display: block;
 	  width: 100%;
 	  border: 1px solid @color-neutral-light;
-	  border-radius: 4px;
 	  transition: border-color .2s, box-shadow .2s;
 
 	  &:focus {

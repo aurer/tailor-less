@@ -1,0 +1,61 @@
+// Create a basic grid
+.Grid(@gridRules: {}, @cellRules: {}, @cellSelector: ~".Grid-cell") {
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	display: flex;
+	flex-flow: row wrap;
+	@gridRules();
+
+	@{cellSelector} {
+		box-sizing: inherit;
+		vertical-align: top;
+		width: 100%;
+		min-width: 0;
+		float: left;
+		@cellRules();
+	}
+}
+
+// Create a grid spaced on the X axis
+.GridX(@spaceX: @space, @selector: ~".Grid-cell") {
+	.Grid({
+		margin-left: -@spaceX;
+	}, {
+		padding-left: @spaceX;
+	},
+	@selector);
+}
+
+// Create a grid spaced on the Y axis
+.GridY(@spaceX: @space, @selector: ~".Grid-cell") {
+	.Grid({}, {
+		padding-bottom: @spaceX;
+	},
+	@selector);
+}
+
+// Create a grid spaced on both X and Y axis
+.GridXY(@spaceX: @space, @spaceY: @spaceX, @selector: ~".Grid-cell") {
+	.Grid({
+		margin-left: -@spaceX;
+	}, {
+		padding-left: @spaceX;
+    padding-bottom: @spaceY;
+	},
+	@selector);
+}
+
+// Generate grid cell size classes
+.GridSizes(@prefix:-, @a:1) when (@a <= @grid-columns) {
+  .GridSize(@b:1) when (@b < @a) {
+    .Grid .u@{prefix}size@{b}of@{a} {
+      .Size(@b/@a);
+    }
+    .GridSize(@b+1);
+  }
+  .GridSize();
+  .GridSizes(@prefix, @a+1);
+}
